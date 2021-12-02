@@ -7,13 +7,13 @@ function Rowpreview() {
     return (
         <div className="row-preview">
             <Row />
-            {/* <Row />
             <Row />
             <Row />
             <Row />
             <Row />
             <Row />
-            <Row /> */}
+            <Row />
+            <Row />
 
         </div>
     )

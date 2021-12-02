@@ -16,7 +16,8 @@ function Navbar() {
     return (
         <div className="navbar">
             <Link onClick={handleClick} 
-            className={currentPage === '/home' ? 'navbar-link active' : 'navbar-link'} to="/home">
+            className={currentPage === '/' ? 'navbar-link active' : 'navbar-link'}
+            to="/">
                 <div className="rectangle">
                     <span>All</span>
                 </div>

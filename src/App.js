@@ -16,7 +16,7 @@ function App() {
       <Header />
       <Navbar />
       <Routes>
-          <Route exact path ="/home" element={<Homepage />} />
+          <Route exact path ="/" element={<Homepage />} />
           <Route exact path ="/faves" element={<Favespage />} />
       </Routes>
     </Router>

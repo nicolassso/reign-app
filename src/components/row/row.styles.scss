@@ -1,19 +1,72 @@
 .row{
-    width: 550px;
-    height: 150px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    opacity: 0.8;
+    border-radius: 6px;
+    border: solid 1px #979797;
+    background-color: #fff;
 
-    .row-container{
-        width: 100%;
+    &:hover{
+        opacity: 0.4;
+    }
+
+    .row-content{
+        width: 87.5%;
         height: 100%;
+        padding: 14px 26px;
+        
 
-        .row-content{
-            width: 482px;
-            height: 100%;
+        .row-date-author{
+            display: flex;
+            align-items: center;
+            margin-bottom: 7px;
+            span{
+                font-family: Roboto;
+                font-size: 11px;
+                font-weight: normal;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: 13px;
+                letter-spacing: normal;
+                color: #767676;
+                padding-left: 8px;
+            }
+            
         }
+        .row-new-content{
+            width: 100%;
+            max-height: 70%;
+            overflow: hidden;
+            span{
+                font-family: Roboto;
+                font-size: 14px;
+                font-weight: 500;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: 1.43;
+                letter-spacing: 0.25px;
+                color: #6b6b6b;
+            }
+        }
+    }
 
-        .row-heart{
-            width: 68px;
-            height: 100%;
+    .row-like{
+        width: 12.5%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(#606060, 0.06);
+        z-index: 1;
+        img{
+            width: 22px;
+            z-index: 10;
+        }
+        .likeButton{
+            border: none;
+            background: transparent;
         }
     }
 }

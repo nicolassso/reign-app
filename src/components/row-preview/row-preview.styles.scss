@@ -1,4 +1,9 @@
 .row-preview{
-    display: flex;
-    
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: 48% 48%;
+    grid-template-rows: repeat(6, 90px);
+    column-gap: 4%;
+    row-gap: 30px;
 }
