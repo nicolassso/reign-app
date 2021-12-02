@@ -1,0 +1,19 @@
+.row{
+    width: 550px;
+    height: 150px;
+
+    .row-container{
+        width: 100%;
+        height: 100%;
+
+        .row-content{
+            width: 482px;
+            height: 100%;
+        }
+
+        .row-heart{
+            width: 68px;
+            height: 100%;
+        }
+    }
+}
