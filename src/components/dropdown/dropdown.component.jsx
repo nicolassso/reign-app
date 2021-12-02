@@ -13,11 +13,15 @@ function Dropdown() {
         //ADD FUCKING PHOTO TO THE LEFT... only strings and numbers are supported as option children
 
         <div className="dropdown">
-            <select name="box" defaultValue="Select News" id="" className="dropdown-box">
-                <option value="Angular" className="angular"> Angular </option>
-                <option value="React" className="react"> React </option>
-                <option value="Vue" className="vue"> Vue </option>
-            </select>
+            <div className="dropdown-inner">
+                <select name="box" defaultValue="default" id="" className="dropdown-box">
+                    <option disabled name="default" id="default"> Select your news </option>
+                    <option value="Angular" className="option angular"> Angular </option>
+                    <option value="React" className="option react"> React </option>
+                    <option value="Vue" className="option vue"> Vue </option>
+                </select>
+                <span className="custom-arrow"><i class="fas fa-angle-down"></i></span>
+            </div>
         </div>
     )
 }
