@@ -20,7 +20,7 @@ function Dropdown() {
                     <option value="React" className="option react"> React </option>
                     <option value="Vue" className="option vue"> Vue </option>
                 </select>
-                <span className="custom-arrow"><i class="fas fa-angle-down"></i></span>
+                <span className="custom-arrow"><i className="fas fa-angle-down"></i></span>
             </div>
         </div>
     )
