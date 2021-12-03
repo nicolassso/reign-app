@@ -1,4 +1,3 @@
-import React from 'react'
 import {Link} from 'react-router-dom'
 import './navbar.styles.scss'
 
@@ -6,7 +5,7 @@ function Navbar() {
 
     const currentPathName = window.location.href
 
-    const handleClick = (p) => {
+    const handleClick = (p: any) => {
         const page = p.slice(p.lastIndexOf('/'))
         return page
     }

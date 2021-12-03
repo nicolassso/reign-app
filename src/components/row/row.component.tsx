@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import {useState} from 'react'
 import './row.styles.scss'
 
 import imgEmptyHeart from '../../assets/images/iconmonstr-favorite-2.png'

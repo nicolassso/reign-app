@@ -17,8 +17,8 @@ function App() {
       <Header />
       <Navbar />
       <Routes>
-          <Route exact path ="/" element={<Homepage />} />
-          <Route exact path ="/faves" element={<Favespage />} />
+          <Route path ="/" element={<Homepage />} />
+          <Route path ="/faves" element={<Favespage />} />
       </Routes>
       <Pagination />
     </Router>

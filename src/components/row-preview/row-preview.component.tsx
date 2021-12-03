@@ -1,4 +1,3 @@
-import React from 'react'
 import './row-preview.styles.scss'
 
 import Row from '../row/row.component'

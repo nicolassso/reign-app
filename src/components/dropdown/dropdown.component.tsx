@@ -1,4 +1,3 @@
-import React from 'react'
 import './dropdown.styles.scss'
 
 
@@ -15,7 +14,7 @@ function Dropdown() {
         <div className="dropdown">
             <div className="dropdown-inner">
                 <select name="box" defaultValue="default" id="" className="dropdown-box">
-                    <option disabled name="default" id="default"> Select your news </option>
+                    <option disabled id="default"> Select your news </option>
                     <option value="Angular" className="option angular"> Angular </option>
                     <option value="React" className="option react"> React </option>
                     <option value="Vue" className="option vue"> Vue </option>

@@ -1,4 +1,3 @@
-import React from 'react'
 import './header.styles.scss'
 import img from '../../assets/images/hacker-news@3x.png'
 
