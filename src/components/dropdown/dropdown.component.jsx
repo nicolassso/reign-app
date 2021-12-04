@@ -1,3 +1,5 @@
+import React from 'react'
+
 import './dropdown.styles.scss'
 
 
@@ -10,7 +12,7 @@ function Dropdown() {
     return (
 
         //ADD FUCKING PHOTO TO THE LEFT... only strings and numbers are supported as option children
-
+        //USE REACT ICONS
         <div className="dropdown">
             <div className="dropdown-inner">
                 <select name="box" defaultValue="default" id="" className="dropdown-box">

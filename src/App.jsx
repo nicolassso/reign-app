@@ -1,3 +1,4 @@
+import React from 'react';
 import './App.css';
 import {BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -9,21 +10,20 @@ import Pagination from './components/pagination/pagination.component'
 import Homepage from './pages/homepage/homepage.component'
 import Favespage from './pages/favespage/favespage.component'
 
-function App() {
 
+
+function App() {
   return (
-    <>
     <Router basename='/'>
-      <Header />
-      <Navbar />
-      <Routes>
-          <Route path ="/" element={<Homepage />} />
-          <Route path ="/faves" element={<Favespage />} />
-      </Routes>
-      <Pagination />
-    </Router>
-    </>
-  );
+        <Header />
+        <Navbar />
+        <Routes>
+            <Route exact path ="/" element={<Homepage/>} />
+            <Route exact path ="/faves" element={<Favespage />} />
+        </Routes>
+        <Pagination />
+      </Router>
+  )
 }
 
-export default App;
+export default App
