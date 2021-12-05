@@ -5,9 +5,9 @@ import imgEmptyHeart from '../../assets/images/iconmonstr-favorite-2.png'
 import imgLiked from '../../assets/images/iconmonstr-favorite-3.png'
 import imgclock from '../../assets/images/iconmonstr-time-2.png'
 
-function Row() {
+function Row(props) {
 
-
+const {author, title, url, created} = props
 
     const [isLiked, setLiked] = useState(false);
 
@@ -21,10 +21,10 @@ function Row() {
             <div className="row-content">
                 <div className="row-date-author">
                     <img src={imgclock} alt="" width='16px'/> 
-                    <span>3hs ago by me</span>
+                    <span>3hs ago by {author}</span>
                     </div>
                 <div className="row-new-content">
-                    <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam, alias a, dicta consequatur quasi.</span>
+                    <span>{title}</span>
                 </div>
             </div>
             <div className="row-like">

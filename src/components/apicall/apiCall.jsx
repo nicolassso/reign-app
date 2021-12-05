@@ -8,7 +8,7 @@ export default{
         'url':'https://hn.algolia.com/api/v1/search_by_date',        
         'params': {
             'query':'angular',
-            'page' : '4'
+            'page' : '1'
         },
     })
 }

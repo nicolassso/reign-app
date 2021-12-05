@@ -17,23 +17,21 @@ const Homepage = () => {
     let [postsPerPage] = useState(8)
     let [title, setTitle] = useState('')
 
-    const fetchData = async (e) => {
 
-        await apiCall.getData()
-        .then(
-            res => {
-                setNews(res.data.hits)
-            }
-        ).catch((error) => {
-            console.log(error)
-        })
-        .then(
-            console.log(news)
-        )
-
-    }
 
     useEffect(() => {
+        const fetchData = async (e) => {
+
+            await apiCall.getData()
+            .then(
+                res => {
+                    setNews(res.data.hits)
+                }
+            ).catch((error) => {
+                console.log(error)
+            })
+    
+        }
         fetchData();
     }, [])
 
@@ -44,7 +42,6 @@ const Homepage = () => {
     return (
         <div className="homepage">
             <Dropdown />
-            <button onClick={(e) => fetchData(e)}></button>
             <Rowpreview news={news}/>
         </div>
     )
