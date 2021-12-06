@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 
 import './homepage.styles.scss'
 
@@ -6,22 +6,23 @@ import Dropdown from '../../components/dropdown/dropdown.component'
 import Rowpreview from '../../components/row-preview/row-preview.component'
 
 import apiCall from '../../components/apicall/apiCall'
+import { QueryContext } from '../../components/context/query.context'
 
 
 
 const Homepage = () => {
 
     let [news, setNews] = useState([])
-    let [currentPage, setCurrentPage] = useState(1)
-    let [currentQuery, setCurrentQuery] = useState('')
+    // let [currentPage, setCurrentPage] = useState(1)
+    // let [currentQuery, setCurrentQuery] = useState('')
 
-    const q = 'reactjs'
+    const query = useContext(QueryContext);
     const p = '0'
 
     useEffect(() => {
         const fetchData = async (e) => {
 
-            await apiCall.getData(q, p)
+            await apiCall.getData(query, p)
             .then(
                 res => {
                     setNews(res.data.hits)
@@ -32,11 +33,7 @@ const Homepage = () => {
     
         }
         fetchData();
-    }, [])
-
-    
-
-
+    }, [query, p]) 
 
     return (
         <div className="homepage">

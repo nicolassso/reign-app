@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import './dropdown.styles.scss'
 
@@ -9,17 +9,50 @@ import './dropdown.styles.scss'
 // import VueLogo from '../../assets/images/image-141.png'
 
 function Dropdown() {
+
+
+    const options = [
+        {
+            id: 1,
+            label: 'Angular',
+            value: 'angular'
+        },
+        {
+            id: 2,
+            label: 'React',
+            value: 'reactjs'
+        },
+        {
+            id: 3,
+            label: 'Vue',
+            value: 'vuejs'
+        }
+    ];
+
+    const [selected, setSelected] = useState('')
+
+    const handleChange = (e) => {
+        setSelected(e.target.value)
+        return selected
+    }
+    
+
     return (
 
         //ADD FUCKING PHOTO TO THE LEFT... only strings and numbers are supported as option children
-        //USE REACT ICONS
         <div className="dropdown">
             <div className="dropdown-inner">
-                <select name="box" defaultValue="default" id="" className="dropdown-box">
-                    <option disabled id="default"> Select your news </option>
-                    <option value="Angular" className="option angular"> Angular </option>
-                    <option value="React" className="option react"> React </option>
-                    <option value="Vue" className="option vue"> Vue </option>
+                <select 
+                name="dropdown" 
+                className="dropdown-box"
+                onChange={handleChange}
+                >
+                    <option value="" disabled selected hidden>Select your news</option>
+
+                    {options.map(option => (
+                        <option key={option.id} value={option.value}>{option.label}</option>
+                    ))}
+
                 </select>
                 <span className="custom-arrow"><i className="fas fa-angle-down"></i></span>
             </div>

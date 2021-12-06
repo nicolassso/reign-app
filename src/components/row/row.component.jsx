@@ -5,13 +5,9 @@ import imgEmptyHeart from '../../assets/images/iconmonstr-favorite-2.png'
 import imgLiked from '../../assets/images/iconmonstr-favorite-3.png'
 import imgclock from '../../assets/images/iconmonstr-time-2.png'
 
-import dateAgo from '../dateAgo/date-ago.component'
-
 function Row(props) {
 
-const {author, title, url, created} = props
-
-console.log(props)
+    const {author, title, url, created} = props
 
     const [isLiked, setLiked] = useState(false);
 

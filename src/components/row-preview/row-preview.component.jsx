@@ -3,7 +3,6 @@ import './row-preview.styles.scss'
 import Row from '../row/row.component'
 
 export const Rowpreview = ({news}) => {
-    console.log(news)
     return(
         <div className="row-preview">
             {news
