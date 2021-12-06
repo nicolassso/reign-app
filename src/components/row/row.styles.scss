@@ -16,6 +16,10 @@
         width: 87.5%;
         height: 100%;
         padding: 14px 26px;
+
+        &:hover{
+            cursor: pointer;
+        }
         
 
         .row-date-author{
