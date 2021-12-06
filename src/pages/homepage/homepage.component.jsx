@@ -14,15 +14,14 @@ const Homepage = () => {
     let [news, setNews] = useState([])
     let [currentPage, setCurrentPage] = useState(1)
     let [currentQuery, setCurrentQuery] = useState('')
-    let [postsPerPage] = useState(8)
-    let [title, setTitle] = useState('')
 
-
+    const q = 'reactjs'
+    const p = '0'
 
     useEffect(() => {
         const fetchData = async (e) => {
 
-            await apiCall.getData()
+            await apiCall.getData(q, p)
             .then(
                 res => {
                     setNews(res.data.hits)

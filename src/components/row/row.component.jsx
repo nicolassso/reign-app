@@ -11,6 +11,8 @@ function Row(props) {
 
 const {author, title, url, created} = props
 
+console.log(props)
+
     const [isLiked, setLiked] = useState(false);
 
     const handleClick = () => {
