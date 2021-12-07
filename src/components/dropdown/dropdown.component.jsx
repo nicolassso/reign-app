@@ -1,15 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import {QueryContext} from '../context/query.context'
 
 import './dropdown.styles.scss'
 
-
-
-// import AngularLogo from '../../assets/images/image-138.png'
-// import ReactLogo from '../../assets/images/image-140.png'
-// import VueLogo from '../../assets/images/image-141.png'
-
 function Dropdown() {
-
 
     const options = [
         {
@@ -29,13 +23,14 @@ function Dropdown() {
         }
     ];
 
-    const [selected, setSelected] = useState('')
+    const [query, setQuery] = useContext(QueryContext)
 
     const handleChange = (e) => {
-        setSelected(e.target.value)
-        return selected
+        setQuery(e.target.value)
+        return query
     }
-    
+
+
 
     return (
 
@@ -59,5 +54,6 @@ function Dropdown() {
         </div>
     )
 }
+
 
 export default Dropdown

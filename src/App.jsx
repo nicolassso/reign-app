@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import {BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import {QueryContext} from './components/context/query.context'
+import { PageContext } from './components/context/query.context';
 
 
 import Header from './components/header/header.component'
@@ -16,9 +17,13 @@ import Favespage from './pages/favespage/favespage.component'
 
 function App() {
 
+  const [query, setQuery] = useState('angular')
+  const [page, setPage] = useState('0')
+
   return (
     <Router basename='/'>
-        <QueryContext.Provider value='angular'>
+        <QueryContext.Provider value={[query, setQuery]}>
+        <PageContext.Provider value={[page, setPage]}>
           <Header />
           <Navbar />
               <Routes>
@@ -26,6 +31,7 @@ function App() {
                   <Route exact path ="/faves" element={<Favespage />} />
               </Routes>
           <Pagination />
+        </PageContext.Provider>
         </QueryContext.Provider>
       </Router>
   )
