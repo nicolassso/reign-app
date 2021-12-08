@@ -14,6 +14,8 @@ function Row(props) {
     const handleClick = () => {
         setLiked(!isLiked)
     }
+    console.log(isLiked)
+
 
     const urlClick = (u) => {
         window.open (u, "_blank")

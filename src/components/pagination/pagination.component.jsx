@@ -8,12 +8,14 @@ function Pagination() {
 
     const [page, setPage] = useContext(PageContext)
     const pages = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+    const actualPage = pages.indexOf(page.toString())
 
     //FUNCTIONS FOR THE LEFT AND RIGHT ARROW
 
+
     const leftArrow = () => {
         if (page > 0){
-            setPage((pages.indexOf(page.toString())-1))
+            setPage((actualPage-1))
         } else{
             setPage('9')
         }
@@ -21,7 +23,7 @@ function Pagination() {
 
     const rightArrow = () => {
         if (page < 9){
-            setPage((pages.indexOf(page.toString())+1))
+            setPage((actualPage+1))
         } else{
             setPage('0')
         }
@@ -36,10 +38,11 @@ function Pagination() {
             </div>
 
             {
+                //NEED TO FOCUS THE PAGE BUTTON IN WHICH THE USER IS NAVIGATING
                 pages.map(p => (
                     <div 
                     key={p}
-                    className="pagination-item"
+                    className={ Object.values(p)==actualPage ? 'pagination-item active' : 'pagination-item'}
                     onClick={()=>{setPage(Object.values(p))}}
                     ><span>{p}</span></div>
                 ))
