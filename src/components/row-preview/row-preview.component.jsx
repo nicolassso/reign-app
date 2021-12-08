@@ -1,8 +1,12 @@
 import React from 'react'
-import './row-preview.styles.scss'
 import Row from '../row/row.component'
+import './row-preview.styles.scss'
+
+import addFaves from '../actions/actions.component'
+
 
 export const Rowpreview = ({news}) => {
+
     return(
         <div className="row-preview">
             {news
@@ -12,7 +16,7 @@ export const Rowpreview = ({news}) => {
                 idx < 8
                 ))
             .map(p =>(
-                <Row key={p.objectID} author={p.author} title={p.story_title} url={p.story_url} created={p.created_at} />
+                <Row key={p.objectID} id={p.objectID} author={p.author} title={p.story_title} url={p.story_url} created={p.created_at} liked={false} />
             ))}
         </div>
     )
