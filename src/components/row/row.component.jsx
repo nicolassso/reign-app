@@ -1,19 +1,16 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import './row.styles.scss'
 
 import imgEmptyHeart from '../../assets/images/iconmonstr-favorite-2.png'
 import imgLiked from '../../assets/images/iconmonstr-favorite-3.png'
 import imgclock from '../../assets/images/iconmonstr-time-2.png'
 
-import {addFaves} from '../actions/actions.component'
-
 
 function Row(props) {
 
-    const {id, author, title, url, created} = props
+    const {id, author, title, url, created, liked} = props
 
     //LOCAL STATE
-    const [isLiked, setisLiked] = useState(false);
 
     const [rowProps, setRowProps] = useState({
         id: id,
@@ -21,25 +18,20 @@ function Row(props) {
         title: title,
         url: url,
         created: created,
-        liked: isLiked
+        liked: liked
     })
 
+    
 
     //HANDLE CLICK
     const handleClick = () => {
-        setisLiked(!isLiked)
         setRowProps({
             ...rowProps,
-            liked: !isLiked
+            liked: !rowProps.liked
         })
-        addFaves(rowProps)
+        // setLikedRows(addToFaves(rowProps))
     }
 
-    //WHEN POST IS LIKED
-    const likedPost = (c) => {
-        !!c && console.log(`liked and writen by ${author}`)
-    }
-    likedPost(isLiked)
 
     
     //OPEN THE NEW URL IN ANOTHER TAB
@@ -63,7 +55,7 @@ function Row(props) {
             <div className="row-like">
                 <button onClick={() => handleClick()} className='likeButton'>
                         {
-                            (isLiked===false)
+                            (rowProps.liked===false)
                             ? <img src={imgEmptyHeart} alt="" /> 
                             : <img src={imgLiked} alt="" />
                         }

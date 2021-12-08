@@ -1,11 +1,35 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Row from '../row/row.component'
 import './row-preview.styles.scss'
 
-import addFaves from '../actions/actions.component'
-
 
 export const Rowpreview = ({news}) => {
+
+    const [likedRows, setLikedRows] = useState([])
+    console.log(likedRows)
+
+    //ADD LIKED ROW TO ARRAY OF LIKED ROWS
+
+    const addToFaves = (row) => {
+        const existingRow = likedRows.map(
+            likedRow => likedRow.id === row.id
+        )
+    
+        if(!existingRow){
+            row.liked=true
+            return likedRows.push(row)
+        }else{
+            return(
+            (likedRows.length<2)
+            ? setLikedRows([])
+            : setLikedRows(
+                likedRows.filter(likedRow => 
+                    likedRow.id!==row.id
+                    ))
+            )
+        }
+    }
+
 
     return(
         <div className="row-preview">

@@ -24,6 +24,23 @@ function App() {
   const [page, setPage] = useState('0')
 
   useEffect(() => {
+    const data = localStorage.getItem("query");
+    const pageData = localStorage.getItem("page")
+    if (data) {
+      setQuery(JSON.parse(data));
+    }
+    if(pageData) {
+      setPage(JSON.parse(pageData))
+    }
+  }, []);
+  
+  useEffect(() => {
+    localStorage.setItem("query", JSON.stringify(query));
+    localStorage.setItem("page", JSON.stringify(page))
+  });
+
+//TRY TO CHANGE THE NUMBER OF POSTS PER PAGE TO 50
+  useEffect(() => {
     const fetchData = async (e) => {
 
         await apiCall.getData(query, page)
@@ -39,7 +56,7 @@ function App() {
     fetchData();
 }, [query, page])
 
-console.log(` ${query} ${page} `)
+
 
   return (
     <Router basename='/'>
