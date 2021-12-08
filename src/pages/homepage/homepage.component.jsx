@@ -14,11 +14,13 @@ import './homepage.styles.scss'
 
 const Homepage = () => {
 
+
     let [news, setNews] = useState([])
     const [query, setQuery] = useContext(QueryContext)
     const [page, setPage] = useContext(PageContext)
+    
 
-    console.log(` ${query} ${page} `)
+
 
     useEffect(() => {
         const fetchData = async (e) => {
@@ -35,6 +37,8 @@ const Homepage = () => {
         }
         fetchData();
     }, [query, page]) 
+
+    console.log(` ${query} ${page} `)
 
     return (
         <div className="homepage">

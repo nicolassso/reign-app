@@ -5,21 +5,28 @@ import imgEmptyHeart from '../../assets/images/iconmonstr-favorite-2.png'
 import imgLiked from '../../assets/images/iconmonstr-favorite-3.png'
 import imgclock from '../../assets/images/iconmonstr-time-2.png'
 
+
 function Row(props) {
 
     const {author, title, url, created} = props
 
     const [isLiked, setLiked] = useState(false);
 
+
     const handleClick = () => {
         setLiked(!isLiked)
     }
-    console.log(isLiked)
 
-
+    //OPEN THE NEW URL IN ANOTHER TAB
     const urlClick = (u) => {
         window.open (u, "_blank")
     }
+    //WHEN POST IS LIKED
+    const likedPost = (c) => {
+        !!c && console.log(`liked and writen by ${author}`)
+    }
+
+    likedPost(isLiked)
 
 
     return (

@@ -38,7 +38,6 @@ function Pagination() {
             </div>
 
             {
-                //NEED TO FOCUS THE PAGE BUTTON IN WHICH THE USER IS NAVIGATING
                 pages.map(p => (
                     <div 
                     key={p}
