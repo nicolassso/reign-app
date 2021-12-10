@@ -15,14 +15,7 @@
             border: solid 1px #2e2e2e;
             box-shadow: 0 2px 2px 0 #dad8d8;
             background-color: #fff;
-            padding: 0 6px;
-    
-            .react{
-                opacity: 0.2;
-                background-color: #eaeaea;
-            }
-    
-            
+            padding: 0 6px;    
         }
     
         .custom-arrow{
@@ -41,9 +34,37 @@
             align-items: center;
             justify-content: center;
         }
+    }    
+
+}
+
+@media screen and (max-width: 980px){
+    .dropdown{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+
+        .dropdown-inner{
+            
+            .custom-arrow{
+                position: absolute;
+                top: 0;
+                right: 0;
+                display: block;
+                background: #fff;
+                height: 95%;
+                width: 1.8rem;
+                border-radius: 4px;
+                pointer-events: none;
+                top: 50%;
+                transform: translate(-4% ,-50%);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
     }
-
-
-    
 
 }

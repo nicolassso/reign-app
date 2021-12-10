@@ -27,11 +27,20 @@ function Row(props) {
 
     const [likedRows, setLikedRows] = useContext(LikedContext)
 
-    
+    //RENDER LIKED HEART WHEN NEW FOUND IN LOCAL STORAGE
     const storage = () => {
         const data = localStorage.getItem('liked-rows')
         if(data){
             setLikedRows(JSON.parse(data))
+
+            likedRows.map(likedRow => 
+                (likedRow.id === rowProps.id) 
+                ? setRowProps({
+                    ...likedRow,
+                    liked:true
+                })
+                : ''
+                )
         }
     }
 
@@ -43,15 +52,21 @@ function Row(props) {
     })
 
 
-    //HANDLE CLICK   
+    //HANDLE CLICK    
+    
+    const handleClick = () => {
+        setRowProps({  
+            ...rowProps,           
+            liked: !rowProps.liked
+        })
+        isRowLiked()
+    }
 
     const isRowLiked = () => {
         if(!rowProps.liked){
-            console.log(`you liked this new by ${author}` + likedRows)
             let arr = likedRows.concat(rowProps)
             setLikedRows(arr)
         }else{
-            console.log(`you don't like new by ${author}`)
             return(
                 (likedRows.length<2)
                 ? setLikedRows([])
@@ -61,16 +76,6 @@ function Row(props) {
                 )
         }
     }
-    
-    const handleClick = () => {
-        setRowProps({  
-            ...rowProps,           
-            liked: !rowProps.liked
-        })
-        isRowLiked();
-    }
-
-
     
     //OPEN THE NEW URL IN ANOTHER TAB
     const urlClick = (u) => {

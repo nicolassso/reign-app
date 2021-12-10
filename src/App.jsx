@@ -23,14 +23,7 @@ function App() {
   let [news, setNews] = useState([])
   const [query, setQuery] = useState('angular')
   const [page, setPage] = useState('0')
-  const [likedRows, setLikedRows] = useState([{
-    id:'hey',
-    author: 'this'
-  },
-{
-  id:'nico',
-  author: 'another'
-}])
+  const [likedRows, setLikedRows] = useState([])
 
   useEffect(() => {
     const data = localStorage.getItem("query");

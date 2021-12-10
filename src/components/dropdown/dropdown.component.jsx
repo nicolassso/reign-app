@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useContext } from 'react'
 import {QueryContext} from '../context/query.context'
 
 import './dropdown.styles.scss'
@@ -34,7 +34,6 @@ function Dropdown() {
 
     return (
 
-        //ADD FUCKING PHOTO TO THE LEFT... only strings and numbers are supported as option children
         <div className="dropdown">
             <div className="dropdown-inner">
                 <select 

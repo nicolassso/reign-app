@@ -1,16 +1,24 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 
 import Rowpreview from '../../components/row-preview/row-preview.component'
+import { LikedContext } from '../../components/context/query.context'
 
 
 import './favespage.styles.scss'
 
 
-function Favespage({news}) {
+function Favespage() {
+
+    const [likedRows, setLikedRows] = useContext(LikedContext)
+    console.log(likedRows)
+
+    useEffect(() => {
+        
+    }, [])
 
     return (
         <div className="favespage">
-            <Rowpreview news={news} />
+            <Rowpreview likedRows={likedRows} />
         </div>
     )
 }

@@ -1,18 +1,37 @@
-import React, { useEffect, useContext } from 'react'
+import React from 'react'
 import Row from '../row/row.component'
 import './row-preview.styles.scss'
-import { LikedContext } from '../context/query.context'
 
 
 
-export const Rowpreview = ({news}) => {
-    
-    const [likedRows, setLikedRows] = useContext(LikedContext)
+export const Rowpreview = ({news, likedRows}) => {
+
+    const currentPathName = window.location.href
+    const currentPage = currentPathName.slice(currentPathName.lastIndexOf('/'))    
 
     return(
         <div className="row-preview">
-            {news
-            //RETURN NEWS WITH TITLE AND URL, THE EIGHT FIRST
+
+{/* RENDER ROW COMPONENTS CONDITIONALLY ON THE PAGE WE ARE */}
+
+        {
+            (currentPage === '/faves') ?
+                likedRows.map(
+                    p => (
+                        <Row
+                        key={p.id}
+                        id={p.id}
+                        author={p.author}
+                        title={p.title}
+                        url={p.url}
+                        created={p.created}
+                        liked={true}
+
+                        />
+                    )
+                )
+            :
+            news   
             .filter(p => !! p.story_title & !! p.story_url )
             .filter((p, idx) => (
                 idx < 8
@@ -28,7 +47,8 @@ export const Rowpreview = ({news}) => {
                 liked={false} 
 
                 />
-            ))}
+            ))
+            }
         </div>
     )
         

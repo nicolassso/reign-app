@@ -48,3 +48,11 @@
             }
     }
 }
+
+@media screen and (max-width: 980px){
+    .pagination{
+        .pagination-item{
+            margin: 0 1.5px;
+        }
+    }
+}
