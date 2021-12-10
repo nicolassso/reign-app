@@ -1,16 +1,18 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import './row.styles.scss'
 
 import imgEmptyHeart from '../../assets/images/iconmonstr-favorite-2.png'
 import imgLiked from '../../assets/images/iconmonstr-favorite-3.png'
 import imgclock from '../../assets/images/iconmonstr-time-2.png'
 
+import { LikedContext } from '../context/query.context'
+
 
 function Row(props) {
 
     const {id, author, title, url, created, liked} = props
 
-    //LOCAL STATE
+    //LOCAL STATE CREATING OBJECT FOR EACH NEW WITH DEFAULT VALUE LIKED OF FALSE
 
     const [rowProps, setRowProps] = useState({
         id: id,
@@ -21,15 +23,51 @@ function Row(props) {
         liked: liked
     })
 
-    
+    //GET THE LIKED ROWS CONTEXT AND DATA FROM LOCAL STORAGE 
 
-    //HANDLE CLICK
+    const [likedRows, setLikedRows] = useContext(LikedContext)
+
+    
+    const storage = () => {
+        const data = localStorage.getItem('liked-rows')
+        if(data){
+            setLikedRows(JSON.parse(data))
+        }
+    }
+
+    useEffect(() => {
+        storage()
+    }, [])
+    useEffect(() => {    
+        localStorage.setItem('liked-rows', JSON.stringify(likedRows))
+    })
+
+
+    //HANDLE CLICK   
+
+    const isRowLiked = () => {
+        if(!rowProps.liked){
+            console.log(`you liked this new by ${author}` + likedRows)
+            let arr = likedRows.concat(rowProps)
+            setLikedRows(arr)
+        }else{
+            console.log(`you don't like new by ${author}`)
+            return(
+                (likedRows.length<2)
+                ? setLikedRows([])
+                : setLikedRows(likedRows.filter(likedRow => 
+                    likedRow.id!==rowProps.id
+                    ))
+                )
+        }
+    }
+    
     const handleClick = () => {
-        setRowProps({
-            ...rowProps,
+        setRowProps({  
+            ...rowProps,           
             liked: !rowProps.liked
         })
-        // setLikedRows(addToFaves(rowProps))
+        isRowLiked();
     }
 
 
@@ -38,8 +76,6 @@ function Row(props) {
     const urlClick = (u) => {
         window.open (u, "_blank")
     }
-
-
 
     return (
         <div className="row">
@@ -53,9 +89,9 @@ function Row(props) {
                 </div>
             </div>
             <div className="row-like">
-                <button onClick={() => handleClick()} className='likeButton'>
+                <button onClick={handleClick} className='likeButton'>
                         {
-                            (rowProps.liked===false)
+                            (!rowProps.liked)
                             ? <img src={imgEmptyHeart} alt="" /> 
                             : <img src={imgLiked} alt="" />
                         }

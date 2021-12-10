@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import {QueryContext} from './components/context/query.context'
 import { PageContext } from './components/context/query.context';
+import { LikedContext } from './components/context/query.context';
 
 import Header from './components/header/header.component'
 import Navbar from './components/navbar/navbar.component'
@@ -22,21 +23,34 @@ function App() {
   let [news, setNews] = useState([])
   const [query, setQuery] = useState('angular')
   const [page, setPage] = useState('0')
+  const [likedRows, setLikedRows] = useState([{
+    id:'hey',
+    author: 'this'
+  },
+{
+  id:'nico',
+  author: 'another'
+}])
 
   useEffect(() => {
     const data = localStorage.getItem("query");
     const pageData = localStorage.getItem("page")
+    const likedData = localStorage.getItem("liked-rows")
     if (data) {
       setQuery(JSON.parse(data));
     }
     if(pageData) {
       setPage(JSON.parse(pageData))
     }
+    if(likedData) {
+      setLikedRows(JSON.parse(likedData))
+    }
   }, []);
   
   useEffect(() => {
     localStorage.setItem("query", JSON.stringify(query));
-    localStorage.setItem("page", JSON.stringify(page))
+    localStorage.setItem("page", JSON.stringify(page));
+    localStorage.setItem("liked-rows", JSON.stringify(likedRows));
   });
 
 //TRY TO CHANGE THE NUMBER OF POSTS PER PAGE TO 50
@@ -57,11 +71,11 @@ function App() {
 }, [query, page])
 
 
-
   return (
     <Router basename='/'>
         <QueryContext.Provider value={[query, setQuery]}>
         <PageContext.Provider value={[page, setPage]}>
+        <LikedContext.Provider value={[likedRows, setLikedRows]} >
           <Header />
           <Navbar />
               <Routes>
@@ -69,6 +83,7 @@ function App() {
                   <Route exact path ="/faves" element={<Favespage news={news} />} />
               </Routes>
           <Pagination />
+        </LikedContext.Provider>
         </PageContext.Provider>
         </QueryContext.Provider>
       </Router>
