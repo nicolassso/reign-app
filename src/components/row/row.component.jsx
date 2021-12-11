@@ -103,11 +103,9 @@ function Row(props) {
             return (minutes + ' min ago')
         }
         if(hours<24){
-            console.log('hours')
             return (hours + ' hs ago')
         }
         if(minutes>1440){
-            console.log('days')
             return (days + ' days ago')
         }
 
