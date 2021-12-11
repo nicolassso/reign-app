@@ -10,7 +10,6 @@ import './favespage.styles.scss'
 function Favespage() {
 
     const [likedRows, setLikedRows] = useContext(LikedContext)
-    console.log(likedRows)
 
     useEffect(() => {
         

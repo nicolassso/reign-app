@@ -8,6 +8,7 @@ import imgclock from '../../assets/images/iconmonstr-time-2.png'
 import { LikedContext } from '../context/query.context'
 
 
+
 function Row(props) {
 
     const {id, author, title, url, created, liked} = props
@@ -22,6 +23,8 @@ function Row(props) {
         created: created,
         liked: liked
     })
+
+
 
     //GET THE LIKED ROWS CONTEXT AND DATA FROM LOCAL STORAGE 
 
@@ -53,7 +56,7 @@ function Row(props) {
 
 
     //HANDLE CLICK    
-    
+
     const handleClick = () => {
         setRowProps({  
             ...rowProps,           
@@ -82,12 +85,41 @@ function Row(props) {
         window.open (u, "_blank")
     }
 
+    
+    //GET DIFFERENCE IN MILLISECONDS, THEN MINUTES, HOURS AND DAYS
+    const today = new Date()
+    const newDate = new Date(created)
+    const rest = Math.abs(today-newDate)
+
+    const [minutes, setMinutes] = useState(Math.round(rest / (1000*60)))
+    const [hours, setHours] = useState(Math.round(minutes/60))
+    const [days, setDays] = useState(Math.round(hours/24))
+
+    //FUNCTION TO DISPLAY TIME ACCORDING TO DISTANCE IN TIME
+
+    const timePosted = () => {
+
+        if(minutes<60){
+            return (minutes + ' min ago')
+        }
+        if(hours<24){
+            console.log('hours')
+            return (hours + ' hs ago')
+        }
+        if(minutes>1440){
+            console.log('days')
+            return (days + ' days ago')
+        }
+
+    }
+
+
     return (
         <div className="row">
             <div onClick={() => urlClick(url)} className="row-content">
                 <div className="row-date-author">
                     <img src={imgclock} alt="" width='16px'/> 
-                    <span>{created} by {author}</span>
+                    <span>{timePosted()} by {author}</span>
                     </div>
                 <div className="row-new-content">
                     <span>{title}</span>
@@ -105,5 +137,6 @@ function Row(props) {
         </div>
     )
 }
+
 
 export default Row
